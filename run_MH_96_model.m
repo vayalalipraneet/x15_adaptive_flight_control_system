@@ -19,7 +19,7 @@ BandPass = tf([2*chi*Wn_act, 0], [1, 2*chi*Wn_act, Wn_act^2]);
 Notch = tf([1, 0, (2*Wn_act)^2], [1, 2*chi*(2*Wn_act), (2*Wn_act)^2]);
 % MH-96's parameters
 Ka    = 1;
-Gamma = 150;
+Gamma = 150;% adaptive gain
 T     = 0.01;
 % Desired Dynamics First order model
 Tau      = 0.5;
@@ -27,7 +27,7 @@ RefModel = tf(-1, [Tau, 1]);
 % Simulation time
 STOP_TIME = 20;
 % Set the initial value of the Kq gain
-Kq0 = 0.0;
+Kq0 = 5;
 % Linearize the open-loop model (negative feedback)
 [a, b, c, d] = linmod('MH_96');
 % Nichols plot
